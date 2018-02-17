@@ -79,45 +79,40 @@
 
 # Preface
 
-Before you start, please note that **IBM Bluemix OpenWhisk** has recently been renamed to **IBM Cloud Functions**. This means that, from an official point of view, **Apache OpenWhisk** refers to the open-source project being available on Apache, while **IBM Cloud Functions** refers to IBM's serverless platform running on top of IBM's public cloud. IBM Cloud Functions is entirely based on Apache OpenWhisk as both projects share the same core codebase.
+[**Apache OpenWhisk**](https://github.com/apache/incubator-openwhisk) is a serverless, functions-as-a-service platform. It may be deployed on-prem or used as a managed service via [**IBM Cloud Functions**](https://ibm.biz/openwhisk). In the following examples, we will use IBM Cloud Functions for simplicity and convenience of getting started. You can follow the same examples on your own private deployment of OpenWhisk. The rest of the tutorial does not distinguish between Apache OpenWhisk and IBM Cloud Functions.
 
-In the following we will, for reasons of simplicity and since most examples would also work on any (locally) hosted OpenWhisk deployment, refer to **OpenWhisk** only and not distinguish between Apache OpenWhisk and IBM Cloud Functions even though we will run many of the examples on top of IBM Cloud.
+During this workshop you will learn how to develop **serverless applications** composed of loosely coupled microservice-like functions. You'll explore OpenWhisk's latest *CLI* (command line interface) and UI and become an OpenWhisk star by implementing a weather bot using *IBM's Weather Company Data service* and *Slack*. You will also investigate how to use other capabilities such as our API Gateway integration allowing you to easily expose functions via API endpoints. You will have a first glance at our research-driven tech-preview called *Composer* allowing you to compose more complex serverless applications by combining multiple functions using control logic and state. Finally, you will find out how to package and deploy your entire serverless application together using the *Serverless Framework*.
 
-During this workshop you will learn how to develop **serverless applications** composed of loosely coupled microservice-like functions. You'll explore OpenWhisk's latest *CLI* (command line interface) and UI and become an OpenWhisk star by implementing a weather bot using *IBM's Weather Company Data service* and *Slack*. You will also investigate how to use other capabilities such us our API Gateway integration allowing you to easily expose functions via API endpoints. You will have a first glance at our research-driven tech-preview called *Composer* allowing you to compose more complex serverless applications by combining multiple functions using control logic and state. Finally, you will find out how to package and deploy your entire serverless application together using the *Serverless Framework*.
-
-We wish you a lot of fun and success...
+We wish you a lot of fun and success.
 
 # Serverless Computing
 
-**Serverless computing** (aka **Funcions-as-a-Service (FaaS)**) refers to a model where the existence of servers is entirely abstracted away. I.e. that even though servers still exist, developers are relieved from the need to care about their operation. They are relieved from the need to worry about low-level infrastructural and operational details such as scalability, high-availability, infrastructure-security, and so forth. Hence, serverless computing is essentially about reducing maintenance efforts to allow developers to quickly focus on developing value-adding code.
+**Serverless computing** (aka **Funcions-as-a-Service (FaaS)**) refers to a model where the existence of servers is entirely abstracted away. While servers exist of course, developers are relieved from the need to care about their operation. They are relieved from the need to worry about low-level infrastructural and operational details such as scalability, high-availability, security, and so forth. Hence, serverless computing is essentially about reducing maintenance efforts to allow developers to quickly focus on developing value-adding code.
 
 Serverless computing simplifies developing cloud-native applications, especially microservice-oriented solutions that decompose complex applications into small and independent modules that can be easily exchanged.
 
 Serverless computing does not refer to a specific technology; instead if refers to the concepts underlying the model described prior. Nevertheless, some promising solutions have recently emerged easing development approaches that follow the serverless model – such as OpenWhisk.
 
-OpenWhisk is a cloud-first distributed event-based programming service and represents a FaaS platform that allows you to execute code in response to an event.
+OpenWhisk is a cloud-first distributed event-based programming service and represents a FaaS platform that allows you to execute code in response to an event. It offers a serverless deployment and operations model, with granular metering (e.g., pricing) for the resources that you use. It offers a flexible programming model and support for several languages which include *Java, JavaScript, Go, PHP, Python, and Swift* and even for the execution of custom logic via precompiled binaries, Bash scripts and *Docker* containers. This allows small agile teams to reuse existing skills and to develop in a fit-for-purpose fashion. It also provides you with tools to declaratively compose together the building blocks you have developed. It is open free, and can run anywhere to avoid with support for deployments on Virtual Machines, Kubernetes, and Mesos. With OpenWhisk, you get a mature, production ready platform, with no vendor lock-in.
 
-It provides you with the previously mentioned serverless deployment and operations model, with a granular pricing model at any scale that provides you with exactly the resources – not more not less – you need and only charges you for code really running. It offers a flexible programming model. incl. support for languages like *Java, JavaScript, PHP, Python, and Swift* and even for the execution of custom logic via *Docker* containers. This allows small agile teams to reuse existing skills and to develop in a fit-for-purpose fashion. It also provides you with tools to declaratively chain together the building blocks you have developed. It is open and can run anywhere to avoid and kind of vendor lock-in.
-
-In summary, OpenWhisk provides...
-* ... a rich set of building blocks that you can easily glue/stitch together
-* ... the ability to focus more on value-adding business logic and less on low-level infrastructural and operational details
-* ... the ability to easily chain together microservices via sequences
-* ... the ability to compose more complex serverless applications by combining multiple functions using control logic and state (*tech-preview*)
-
-In summary, our value proposition and what makes us different is:
+The OpenWhisk value proposition and what makes us different is:
 * OpenWhisk hides infrastructural complexity allowing developers to focus on business logic
 * OpenWhisk takes care of low-level details such as scaling, load balancing, logging, fault tolerance, and message queues
 * OpenWhisk provides a rich ecosystem of building blocks from various domains (analytics, cognitive, data, IoT, etc.)
 * OpenWhisk is open and designed to support an open community
 * OpenWhisk supports an open ecosystem that allows sharing microservices via OpenWhisk packages
 * OpenWhisk allows developers to compose solutions using modern abstractions and chaining
-* OpenWhisk supports multiple runtimes including Java, JavaScript, PHP, Python, and Swift, and arbitrary binary programs encapsulated in Docker containers
-* OpenWhisk charges only for code that runs
+* OpenWhisk supports multiple runtimes including popular programming languages, binaries and containers
+* OpenWhisk meters only for code that runs
+
+In summary, OpenWhisk provides...
+* ... the ability to focus on value-adding business logic and less on low-level infrastructural and operational details
+* ... a platform for rapidly building rich functions, in many languages, that are cloud-native by construction
+* ... the ability to compose and create larger cloud-native applications connecting functions and microservices
 
 The (basic) OpenWhisk model consists of three concepts:
+* `action`, an event handler --- the function that runs in response to an event,
 * `trigger`, a class of events that can happen,
-* `action`, an event handler -- some code that runs in response to an event, and
 * `rule`, an association between a trigger and an action.
 
 Services define the events they emit as triggers, and developers define the actions to handle the events.
