@@ -122,19 +122,16 @@ Developers only need to care about implementing the desired application logic - 
 # Prepare your engines!
 
 A few important notes before you start:
-* When working through the lab you may see slightly different responses being returned from your CLI than those printed as part of these instructions.<br/>You do not need to worry about this. The reason is that you may use a different namespace than the one we used when generating this document; the differences will be minor and only result in some name-prefixing.
-* Important remark for *Linux* users: You may need to install a few additional tools like `cURL` (e.g. for *Ubuntu* you can install this via `sudo apt-get update && sudo apt-get install curl`)
-* Important remark for *Windows* users: Windows users are strongly advised to download *Git* (https://git-for-windows.github.io/) and to work from the *Git bash*. They are also advised to download `cURL` for Windows (https://curl.haxx.se/download.html)
+* When working through the lab you may see slightly different responses being returned from your CLI than those printed as part of these instructions. You do not need to worry about this. The reason is that you may use a different namespace than the one we used when generating this document; the differences will be minor and only result in some name-prefixing.
+* *Linux* users: You may need to install a few additional tools like `cURL` (e.g. for *Ubuntu* you can install this via `sudo apt-get update && sudo apt-get install curl`).
+* *Windows* users: Windows users are strongly advised to download *Git* (https://git-for-windows.github.io/) and to work from the *Git bash*. They are also advised to download `cURL` for Windows (https://curl.haxx.se/download.html).
+* *Mac* users: Use the Terminal app to get started.
 
 In order to use OpenWhisk proceed as follows:
-1. Open a browser window
-2. Navigate to https://console.ng.bluemix.net/openwhisk/
-3. Log-in with your Bluemix account
-   Create one if you do not yet have one by clicking the `Sign Up` link or by directly navigating to https://console.ng.bluemix.net/registration/
-4. Make sure to pick one of the following regions (pick the one closer to where you are): `US South` or `United Kingdom`
-   Note that when not picking `US South` the `.ng.` fragment of some of the `URLs` shown later needs to be replaced with other fragments, for instance for the region `United Kingdom` with `.eu-gb.`.
-5. Click the `Download CLI` button
-6. Follow steps 1 to 3 (you do not necessarily need to perform step 4), i.e. download the CLI for your particular platform, install OpenWhisk plugin, login to Bluemix specifying the api endpoint, organization and namespace.
+1. Open a browser window and navigate to https://ibm.biz/openwhisk
+3. Create a new or login to an existing IBM Cloud account. To create an account, click the `Sign Up` link or navigate directly to https://console.ng.bluemix.net/registration.
+4. Make sure to pick one of the following regions (pick the one closer to where you are): `US South`, `United Kingdom`, `Germany`. Note that the URLs shown in this tutorial use the API host in `US South`. You will need a different API host for other regions. Usually this is a replacement of the `.ng.` fragment shown later with `.eu-gb.` for the UK and `.eu-de.` for Germany.
+5. Click the `CLI` link in the left panel and follow the steps to download and configure the CLI.
 
 # Start your engines!
 
